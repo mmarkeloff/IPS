@@ -1,0 +1,13 @@
+﻿  task_for_lecture2.cpp
+C:\Users\mmarkelov\source\repos\IPS\task_for_lecture2.cpp(11): warning #3947: "_Cilk_for" has been deprecated, and will be removed in a future release.  Please refer to release notes for details and recommended alternatives
+    	cilk_for(long i = 0; i < size; ++i)
+    	^
+  
+C:\Users\mmarkelov\source\repos\IPS\task_for_lecture2.cpp(32): warning #3946: "_Cilk_spawn" has been deprecated, and will be removed in a future release.  Please refer to release notes for details and recommended alternatives
+    		cilk_spawn ParallelSort(begin, middle);
+    		^
+  
+C:\Users\mmarkelov\source\repos\IPS\task_for_lecture2.cpp(45): warning #592: variable "i" is used before its value is set
+    	for (long i; i < sz; i++)
+    	             ^
+  
