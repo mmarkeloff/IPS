@@ -11,8 +11,8 @@ namespace consts {
 double par(void) {
     omp_lock_t          writeLock;
     uint64_t            inc             = 0;
-	double              S               = 0.0;
-	double              t               = omp_get_wtime();
+    double              S               = 0.0;
+    double              t               = omp_get_wtime();
 
     omp_init_lock(&writeLock);
 #pragma omp parallel for reduction(+:S) private (x) shared(consts::step)
@@ -22,18 +22,18 @@ double par(void) {
             S += 4.0 / (1.0 + pow(x, 2)); 
  #pragma omp critical
             {
-                //omp_set_lock(&writeLock);
+                omp_set_lock(&writeLock);
                 inc++;
-                //omp_unset_lock(&writeLock);
+                omp_unset_lock(&writeLock);
             }
         }
     }
     omp_destroy_lock(&writeLock);
 
-	t = omp_get_wtime() - t;
+    t = omp_get_wtime() - t;
     std::cout << "par: pi = " << consts::step * S << std::endl;
     std::cout << "inc = " << inc << std::endl;
-	return t;
+    return t;
 }
 
 int main() {
@@ -46,5 +46,5 @@ int main() {
         }
     }
     std::cout << "elapsed time: " << par() << " sec." << std::endl;
-	return 0;
+    return 0;
 }
